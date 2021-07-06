@@ -2,23 +2,26 @@ import tweepy
 import pandas as pd
 import random, pickle, time
 
+#Funcion conecion a twitter
 def create_api():
-    consumer_key = "ls5gJffQfrYLXAwCOQ6jBt9TN"   #Claves
-    consumer_secret = "TYNLaVYsEKKU1jU6yT4oBT6KCoR9ov33Ne2PFzC4IPu55dg1PS"
+    #Claves
+    consumer_key = ""   
+    consumer_secret = ""
 
-    apikey = "1344062997149458434-itFTaGuqwqB1ibw321399Fxsm702sc"
-    apikeysecret = "EHFHAEH7nyVVDJpOVvkdrCdv2ZdgDn7G3tflmOQwXSkYW"
-
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret) #Conexiones
+    apikey = ""
+    apikeysecret = ""
+    #Conexiones
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret) 
     auth.set_access_token(apikey, apikeysecret)
     api = tweepy.API(auth, wait_on_rate_limit = True, wait_on_rate_limit_notify = True)
     return  api
-
+#Funcion para seleccion de frase
 def duko():
     lista = dp[::]
     rdo = random.choice(lista)
     return rdo
 
+#Funcion respuesta si la cuenta es etiquetada
 def resp():
     search = "@duki_bot"
     tuits = tweepy.Cursor(api.search, q=search).items(1)
@@ -35,6 +38,7 @@ def resp():
 with open("frases.pickle", "rb") as file:
         dp = pickle.load(file)
 
+#Proceso
 api = create_api()
 while True:
     resp()
